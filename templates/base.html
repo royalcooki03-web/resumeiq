@@ -1,0 +1,4 @@
+<!doctype html><html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>{% block title %}ResumeIQ{% endblock %}</title><link rel="stylesheet" href="{{url_for('static',filename='style.css')}}"></head><body>
+{% if user %}<aside class="side"><a class="logo" href="{{url_for('dashboard')}}"><span>✦</span> ResumeIQ</a><nav><a href="{{url_for('dashboard')}}">⌂ <span>Dashboard</span></a><a href="{{url_for('history')}}">◷ <span>History</span></a><a href="{{url_for('profile')}}">◉ <span>Profile</span></a></nav><div class="side-bottom"><a href="{{url_for('logout')}}">↪ <span>Logout</span></a></div></aside>{% endif %}
+<div class="{{'app' if user else 'public'}}">{% with msgs=get_flashed_messages(with_categories=true) %}{% if msgs %}<div class="flash {{msgs[-1][0]}}">{{msgs[-1][1]}}</div>{% endif %}{% endwith %}{% block content %}{% endblock %}</div>
+</body></html>
